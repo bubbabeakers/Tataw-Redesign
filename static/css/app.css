@@ -1,0 +1,47 @@
+@import "../node_modules/normalize.css/normalize.css";
+
+:root {
+  --ff-primary: 'Nunito', Helvetica, sans-serif;
+
+  --clr-primary-darker: #131313;
+  --clr-primary-dark: #171717;
+  --clr-primary: #191919;
+  --clr-primary-light: #1f1f1f;
+  --clr-accent: #576CD8;
+  --clr-accent-dark: #455CD4;
+  --clr-red: #E41710;
+  --clr-gray: #CED0CE;
+
+  --border-radius: 4px;
+  --box-shadow: 0 0 3px 3px var(--clr-primary-darker);
+  --sidebar-width: 250px;
+  --chat-width: 340px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--ff-primary);
+  line-height: 1;
+}
+
+html {
+  font-size: 62.5%;
+  background: var(--clr-primary-dark);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+input {
+  border: none;
+}

@@ -1,0 +1,1392 @@
+[
+  {
+    "setId": "1979-revolution_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "1979 Revolution"
+      }
+    ]
+  },
+  {
+    "setId": "60-seconds_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "60 Seconds!"
+      }
+    ]
+  },
+  {
+    "setId": "60-seconds_2",
+    "versions": [
+      {
+        "id": "1",
+        "title": "60 Seconds!"
+      }
+    ]
+  },
+  {
+    "setId": "60-seconds_3",
+    "versions": [
+      {
+        "id": "1",
+        "title": "60 Seconds!"
+      }
+    ]
+  },
+  {
+    "setId": "H1Z1_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "H1Z1"
+      }
+    ]
+  },
+  {
+    "setId": "admin",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Admin"
+      }
+    ]
+  },
+  {
+    "setId": "ambassador",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Twitch Ambassador"
+      }
+    ]
+  },
+  {
+    "setId": "anomaly-2_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Anomaly 2"
+      }
+    ]
+  },
+  {
+    "setId": "anomaly-warzone-earth_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Anomaly Warzone Earth"
+      }
+    ]
+  },
+  {
+    "setId": "anonymous-cheerer",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Anonymous Cheerer"
+      }
+    ]
+  },
+  {
+    "setId": "artist-badge",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Artist"
+      }
+    ]
+  },
+  {
+    "setId": "axiom-verge_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Axiom Verge"
+      }
+    ]
+  },
+  {
+    "setId": "battlechefbrigade_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Battle Chef Brigade"
+      }
+    ]
+  },
+  {
+    "setId": "battlechefbrigade_2",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Battle Chef Brigade"
+      }
+    ]
+  },
+  {
+    "setId": "battlechefbrigade_3",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Battle Chef Brigade"
+      }
+    ]
+  },
+  {
+    "setId": "battlerite_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Battlerite"
+      }
+    ]
+  },
+  {
+    "setId": "bits",
+    "versions": [
+      {
+        "id": "1",
+        "title": "cheer 1"
+      },
+      {
+        "id": "100",
+        "title": "cheer 100"
+      },
+      {
+        "id": "1000",
+        "title": "cheer 1000"
+      },
+      {
+        "id": "10000",
+        "title": "cheer 10000"
+      },
+      {
+        "id": "100000",
+        "title": "cheer 100000"
+      },
+      {
+        "id": "1000000",
+        "title": "cheer 1000000"
+      },
+      {
+        "id": "1250000",
+        "title": "cheer 1250000"
+      },
+      {
+        "id": "1500000",
+        "title": "cheer 1500000"
+      },
+      {
+        "id": "1750000",
+        "title": "cheer 1750000"
+      },
+      {
+        "id": "200000",
+        "title": "cheer 200000"
+      },
+      {
+        "id": "2000000",
+        "title": "cheer 2000000"
+      },
+      {
+        "id": "25000",
+        "title": "cheer 25000"
+      },
+      {
+        "id": "2500000",
+        "title": "cheer 2500000"
+      },
+      {
+        "id": "300000",
+        "title": "cheer 300000"
+      },
+      {
+        "id": "3000000",
+        "title": "cheer 3000000"
+      },
+      {
+        "id": "3500000",
+        "title": "cheer 3500000"
+      },
+      {
+        "id": "400000",
+        "title": "cheer 400000"
+      },
+      {
+        "id": "4000000",
+        "title": "cheer 4000000"
+      },
+      {
+        "id": "4500000",
+        "title": "cheer 4500000"
+      },
+      {
+        "id": "5000",
+        "title": "cheer 5000"
+      },
+      {
+        "id": "50000",
+        "title": "cheer 50000"
+      },
+      {
+        "id": "500000",
+        "title": "cheer 500000"
+      },
+      {
+        "id": "5000000",
+        "title": "cheer 5000000"
+      },
+      {
+        "id": "600000",
+        "title": "cheer 600000"
+      },
+      {
+        "id": "700000",
+        "title": "cheer 700000"
+      },
+      {
+        "id": "75000",
+        "title": "cheer 75000"
+      },
+      {
+        "id": "800000",
+        "title": "cheer 800000"
+      },
+      {
+        "id": "900000",
+        "title": "cheer 900000"
+      }
+    ]
+  },
+  {
+    "setId": "bits-charity",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Direct Relief - Charity 2018"
+      }
+    ]
+  },
+  {
+    "setId": "bits-leader",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Bits Leader 1"
+      },
+      {
+        "id": "2",
+        "title": "Bits Leader 2"
+      },
+      {
+        "id": "3",
+        "title": "Bits Leader 3"
+      }
+    ]
+  },
+  {
+    "setId": "brawlhalla_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Brawlhalla"
+      }
+    ]
+  },
+  {
+    "setId": "broadcaster",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Broadcaster"
+      }
+    ]
+  },
+  {
+    "setId": "broken-age_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Broken Age"
+      }
+    ]
+  },
+  {
+    "setId": "bubsy-the-woolies_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Bubsy: The Woolies Strike Back"
+      }
+    ]
+  },
+  {
+    "setId": "chatter-cs-go-2022",
+    "versions": [
+      {
+        "id": "1",
+        "title": "CS:GO Week Brazil 2022"
+      }
+    ]
+  },
+  {
+    "setId": "clip-champ",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Power Clipper"
+      }
+    ]
+  },
+  {
+    "setId": "creator-cs-go-2022",
+    "versions": [
+      {
+        "id": "1",
+        "title": "CS:GO Week Brazil 2022"
+      }
+    ]
+  },
+  {
+    "setId": "cuphead_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Cuphead"
+      }
+    ]
+  },
+  {
+    "setId": "darkest-dungeon_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Darkest Dungeon"
+      }
+    ]
+  },
+  {
+    "setId": "deceit_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Deceit"
+      }
+    ]
+  },
+  {
+    "setId": "devil-may-cry-hd_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Devil May Cry HD Collection"
+      }
+    ]
+  },
+  {
+    "setId": "devil-may-cry-hd_2",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Devil May Cry HD Collection"
+      }
+    ]
+  },
+  {
+    "setId": "devil-may-cry-hd_3",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Devil May Cry HD Collection"
+      }
+    ]
+  },
+  {
+    "setId": "devil-may-cry-hd_4",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Devil May Cry HD Collection"
+      }
+    ]
+  },
+  {
+    "setId": "devilian_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Devilian"
+      }
+    ]
+  },
+  {
+    "setId": "duelyst_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Duelyst"
+      }
+    ]
+  },
+  {
+    "setId": "duelyst_2",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Duelyst"
+      }
+    ]
+  },
+  {
+    "setId": "duelyst_3",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Duelyst"
+      }
+    ]
+  },
+  {
+    "setId": "duelyst_4",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Duelyst"
+      }
+    ]
+  },
+  {
+    "setId": "duelyst_5",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Duelyst"
+      }
+    ]
+  },
+  {
+    "setId": "duelyst_6",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Duelyst"
+      }
+    ]
+  },
+  {
+    "setId": "duelyst_7",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Duelyst"
+      }
+    ]
+  },
+  {
+    "setId": "enter-the-gungeon_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Enter The Gungeon"
+      }
+    ]
+  },
+  {
+    "setId": "eso_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Elder Scrolls Online"
+      }
+    ]
+  },
+  {
+    "setId": "extension",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Extension"
+      }
+    ]
+  },
+  {
+    "setId": "firewatch_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Firewatch"
+      }
+    ]
+  },
+  {
+    "setId": "founder",
+    "versions": [
+      {
+        "id": "0",
+        "title": "Founder"
+      }
+    ]
+  },
+  {
+    "setId": "frozen-cortext_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Frozen Cortext"
+      }
+    ]
+  },
+  {
+    "setId": "frozen-synapse_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Frozen Synapse"
+      }
+    ]
+  },
+  {
+    "setId": "game-developer",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Game Developer"
+      }
+    ]
+  },
+  {
+    "setId": "getting-over-it_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Getting Over It"
+      }
+    ]
+  },
+  {
+    "setId": "getting-over-it_2",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Getting Over It"
+      }
+    ]
+  },
+  {
+    "setId": "glhf-pledge",
+    "versions": [
+      {
+        "id": "1",
+        "title": "GLHF Pledge"
+      }
+    ]
+  },
+  {
+    "setId": "glitchcon2020",
+    "versions": [
+      {
+        "id": "1",
+        "title": "GlitchCon 2020"
+      }
+    ]
+  },
+  {
+    "setId": "global_mod",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Global Moderator"
+      }
+    ]
+  },
+  {
+    "setId": "heavy-bullets_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Heavy Bullets"
+      }
+    ]
+  },
+  {
+    "setId": "hello_neighbor_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Hello Neighbor"
+      }
+    ]
+  },
+  {
+    "setId": "hype-train",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Current Hype Train Conductor"
+      },
+      {
+        "id": "2",
+        "title": "Former Hype Train Conductor"
+      }
+    ]
+  },
+  {
+    "setId": "innerspace_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Innerspace"
+      }
+    ]
+  },
+  {
+    "setId": "innerspace_2",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Innerspace"
+      }
+    ]
+  },
+  {
+    "setId": "jackbox-party-pack_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Jackbox Party Pack"
+      }
+    ]
+  },
+  {
+    "setId": "kingdom-new-lands_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Kingdom: New Lands"
+      }
+    ]
+  },
+  {
+    "setId": "moderator",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Moderator"
+      }
+    ]
+  },
+  {
+    "setId": "moments",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Moments Badge - Tier 1"
+      },
+      {
+        "id": "10",
+        "title": "Moments Badge - Tier 10"
+      },
+      {
+        "id": "11",
+        "title": "Moments Badge - Tier 11"
+      },
+      {
+        "id": "12",
+        "title": "Moments Badge - Tier 12"
+      },
+      {
+        "id": "13",
+        "title": "Moments Badge - Tier 13"
+      },
+      {
+        "id": "14",
+        "title": "Moments Badge - Tier 14"
+      },
+      {
+        "id": "15",
+        "title": "Moments Badge - Tier 15"
+      },
+      {
+        "id": "16",
+        "title": "Moments Badge - Tier 16"
+      },
+      {
+        "id": "17",
+        "title": "Moments Badge - Tier 17"
+      },
+      {
+        "id": "18",
+        "title": "Moments Badge - Tier 18"
+      },
+      {
+        "id": "19",
+        "title": "Moments Badge - Tier 19"
+      },
+      {
+        "id": "2",
+        "title": "Moments Badge - Tier 2"
+      },
+      {
+        "id": "20",
+        "title": "Moments Badge - Tier 20"
+      },
+      {
+        "id": "3",
+        "title": "Moments Badge - Tier 3"
+      },
+      {
+        "id": "4",
+        "title": "Moments Badge - Tier 4"
+      },
+      {
+        "id": "5",
+        "title": "Moments Badge - Tier 5"
+      },
+      {
+        "id": "6",
+        "title": "Moments Badge - Tier 6"
+      },
+      {
+        "id": "7",
+        "title": "Moments Badge - Tier 7"
+      },
+      {
+        "id": "8",
+        "title": "Moments Badge - Tier 8"
+      },
+      {
+        "id": "9",
+        "title": "Moments Badge - Tier 9"
+      }
+    ]
+  },
+  {
+    "setId": "no_audio",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Watching without audio"
+      }
+    ]
+  },
+  {
+    "setId": "no_video",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Listening only"
+      }
+    ]
+  },
+  {
+    "setId": "okhlos_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Okhlos"
+      }
+    ]
+  },
+  {
+    "setId": "overwatch-league-insider_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "OWL All-Access Pass 2018"
+      }
+    ]
+  },
+  {
+    "setId": "overwatch-league-insider_2018B",
+    "versions": [
+      {
+        "id": "1",
+        "title": "OWL All-Access Pass 2018"
+      }
+    ]
+  },
+  {
+    "setId": "overwatch-league-insider_2019A",
+    "versions": [
+      {
+        "id": "1",
+        "title": "OWL All-Access Pass 2019"
+      },
+      {
+        "id": "2",
+        "title": "OWL All-Access Pass 2019"
+      }
+    ]
+  },
+  {
+    "setId": "overwatch-league-insider_2019B",
+    "versions": [
+      {
+        "id": "1",
+        "title": "OWL All-Access Pass 2019"
+      },
+      {
+        "id": "2",
+        "title": "OWL All-Access Pass 2019"
+      },
+      {
+        "id": "3",
+        "title": "OWL All-Access Pass 2019"
+      },
+      {
+        "id": "4",
+        "title": "OWL All-Access Pass 2019"
+      },
+      {
+        "id": "5",
+        "title": "OWL All-Access Pass 2019"
+      }
+    ]
+  },
+  {
+    "setId": "partner",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Verified"
+      }
+    ]
+  },
+  {
+    "setId": "power-rangers",
+    "versions": [
+      {
+        "id": "0",
+        "title": "Black Ranger"
+      },
+      {
+        "id": "1",
+        "title": "Blue Ranger"
+      },
+      {
+        "id": "2",
+        "title": "Green Ranger"
+      },
+      {
+        "id": "3",
+        "title": "Pink Ranger"
+      },
+      {
+        "id": "4",
+        "title": "Red Ranger"
+      },
+      {
+        "id": "5",
+        "title": "White Ranger"
+      },
+      {
+        "id": "6",
+        "title": "Yellow Ranger"
+      }
+    ]
+  },
+  {
+    "setId": "predictions",
+    "versions": [
+      {
+        "id": "blue-1",
+        "title": "Predicted Blue (1)"
+      },
+      {
+        "id": "blue-10",
+        "title": "Predicted Blue (10)"
+      },
+      {
+        "id": "blue-2",
+        "title": "Predicted Blue (2)"
+      },
+      {
+        "id": "blue-3",
+        "title": "Predicted Blue (3)"
+      },
+      {
+        "id": "blue-4",
+        "title": "Predicted Blue (4)"
+      },
+      {
+        "id": "blue-5",
+        "title": "Predicted Blue (5)"
+      },
+      {
+        "id": "blue-6",
+        "title": "Predicted Blue (6)"
+      },
+      {
+        "id": "blue-7",
+        "title": "Predicted Blue (7)"
+      },
+      {
+        "id": "blue-8",
+        "title": "Predicted Blue (8)"
+      },
+      {
+        "id": "blue-9",
+        "title": "Predicted Blue (9)"
+      },
+      {
+        "id": "gray-1",
+        "title": "Predicted Gray (1)"
+      },
+      {
+        "id": "gray-2",
+        "title": "Predicted Gray (2)"
+      },
+      {
+        "id": "pink-1",
+        "title": "Predicted Pink (1)"
+      },
+      {
+        "id": "pink-2",
+        "title": "Predicted Pink (2)"
+      }
+    ]
+  },
+  {
+    "setId": "premium",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Prime Gaming"
+      }
+    ]
+  },
+  {
+    "setId": "psychonauts_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Psychonauts"
+      }
+    ]
+  },
+  {
+    "setId": "raiden-v-directors-cut_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Raiden V"
+      }
+    ]
+  },
+  {
+    "setId": "rift_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "RIFT"
+      }
+    ]
+  },
+  {
+    "setId": "samusoffer_beta",
+    "versions": [
+      {
+        "id": "0",
+        "title": "beta_title1"
+      }
+    ]
+  },
+  {
+    "setId": "staff",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Staff"
+      }
+    ]
+  },
+  {
+    "setId": "starbound_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Starbound"
+      }
+    ]
+  },
+  {
+    "setId": "strafe_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Strafe"
+      }
+    ]
+  },
+  {
+    "setId": "sub-gift-leader",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Gifter Leader 1"
+      },
+      {
+        "id": "2",
+        "title": "Gifter Leader 2"
+      },
+      {
+        "id": "3",
+        "title": "Gifter Leader 3"
+      }
+    ]
+  },
+  {
+    "setId": "sub-gifter",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Sub Gifter"
+      },
+      {
+        "id": "10",
+        "title": "10 Gift Subs"
+      },
+      {
+        "id": "100",
+        "title": "100 Gift Subs"
+      },
+      {
+        "id": "1000",
+        "title": "1000 Gift Subs"
+      },
+      {
+        "id": "150",
+        "title": "150 Gift Subs"
+      },
+      {
+        "id": "200",
+        "title": "200 Gift Subs"
+      },
+      {
+        "id": "2000",
+        "title": "2000 Gift Subs"
+      },
+      {
+        "id": "25",
+        "title": "25 Gift Subs"
+      },
+      {
+        "id": "250",
+        "title": "250 Gift Subs"
+      },
+      {
+        "id": "300",
+        "title": "300 Gift Subs"
+      },
+      {
+        "id": "3000",
+        "title": "3000 Gift Subs"
+      },
+      {
+        "id": "350",
+        "title": "350 Gift Subs"
+      },
+      {
+        "id": "400",
+        "title": "400 Gift Subs"
+      },
+      {
+        "id": "4000",
+        "title": "4000 Gift Subs"
+      },
+      {
+        "id": "450",
+        "title": "450 Gift Subs"
+      },
+      {
+        "id": "5",
+        "title": "5 Gift Subs"
+      },
+      {
+        "id": "50",
+        "title": "50 Gift Subs"
+      },
+      {
+        "id": "500",
+        "title": "500 Gift Subs"
+      },
+      {
+        "id": "5000",
+        "title": "5000 Gift Subs"
+      },
+      {
+        "id": "550",
+        "title": "550 Gift Subs"
+      },
+      {
+        "id": "600",
+        "title": "600 Gift Subs"
+      },
+      {
+        "id": "650",
+        "title": "650 Gift Subs"
+      },
+      {
+        "id": "700",
+        "title": "700 Gift Subs"
+      },
+      {
+        "id": "750",
+        "title": "750 Gift Subs"
+      },
+      {
+        "id": "800",
+        "title": "800 Gift Subs"
+      },
+      {
+        "id": "850",
+        "title": "850 Gift Subs"
+      },
+      {
+        "id": "900",
+        "title": "900 Gift Subs"
+      },
+      {
+        "id": "950",
+        "title": "950 Gift Subs"
+      }
+    ]
+  },
+  {
+    "setId": "subscriber",
+    "versions": [
+      {
+        "id": "0",
+        "title": "Subscriber"
+      },
+      {
+        "id": "1",
+        "title": "Subscriber"
+      },
+      {
+        "id": "2",
+        "title": "2-Month Subscriber"
+      },
+      {
+        "id": "3",
+        "title": "3-Month Subscriber"
+      },
+      {
+        "id": "4",
+        "title": "6-Month Subscriber"
+      },
+      {
+        "id": "5",
+        "title": "9-Month Subscriber"
+      },
+      {
+        "id": "6",
+        "title": "6-Month Subscriber"
+      }
+    ]
+  },
+  {
+    "setId": "superhot_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Superhot"
+      }
+    ]
+  },
+  {
+    "setId": "the-surge_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "The Surge"
+      }
+    ]
+  },
+  {
+    "setId": "the-surge_2",
+    "versions": [
+      {
+        "id": "1",
+        "title": "The Surge"
+      }
+    ]
+  },
+  {
+    "setId": "the-surge_3",
+    "versions": [
+      {
+        "id": "1",
+        "title": "The Surge"
+      }
+    ]
+  },
+  {
+    "setId": "this-war-of-mine_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "This War of Mine"
+      }
+    ]
+  },
+  {
+    "setId": "titan-souls_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Titan Souls"
+      }
+    ]
+  },
+  {
+    "setId": "treasure-adventure-world_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Treasure Adventure World"
+      }
+    ]
+  },
+  {
+    "setId": "turbo",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Turbo"
+      }
+    ]
+  },
+  {
+    "setId": "twitchbot",
+    "versions": [
+      {
+        "id": "1",
+        "title": "AutoMod"
+      }
+    ]
+  },
+  {
+    "setId": "twitchcon2017",
+    "versions": [
+      {
+        "id": "1",
+        "title": "TwitchCon 2017 - Long Beach"
+      }
+    ]
+  },
+  {
+    "setId": "twitchcon2018",
+    "versions": [
+      {
+        "id": "1",
+        "title": "TwitchCon 2018 - San Jose"
+      }
+    ]
+  },
+  {
+    "setId": "twitchconAmsterdam2020",
+    "versions": [
+      {
+        "id": "1",
+        "title": "TwitchCon 2020 - North America"
+      }
+    ]
+  },
+  {
+    "setId": "twitchconEU2019",
+    "versions": [
+      {
+        "id": "1",
+        "title": "TwitchCon 2019 - Berlin"
+      }
+    ]
+  },
+  {
+    "setId": "twitchconEU2022",
+    "versions": [
+      {
+        "id": "1",
+        "title": "TwitchCon 2022 - Amsterdam"
+      }
+    ]
+  },
+  {
+    "setId": "twitchconNA2019",
+    "versions": [
+      {
+        "id": "1",
+        "title": "TwitchCon 2019 - San Diego"
+      }
+    ]
+  },
+  {
+    "setId": "twitchconNA2020",
+    "versions": [
+      {
+        "id": "1",
+        "title": "TwitchCon 2020 - North America"
+      }
+    ]
+  },
+  {
+    "setId": "twitchconNA2022",
+    "versions": [
+      {
+        "id": "1",
+        "title": "TwitchCon 2022 - San Diego"
+      }
+    ]
+  },
+  {
+    "setId": "tyranny_1",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Tyranny"
+      }
+    ]
+  },
+  {
+    "setId": "user-anniversary",
+    "versions": [
+      {
+        "id": "1",
+        "title": "Twitchiversary Badge"
+      }
+    ]
+  },
+  {
+    "setId": "vga-champ-2017",
+    "versions": [
+      {
+        "id": "1",
+        "title": "2017 VGA Champ"
+      }
+    ]
+  },
+  {
+    "setId": "vip",
+    "versions": [
+      {
+        "id": "1",
+        "title": "VIP"
+      }
+    ]
+  },
+  {
+    "setId": "warcraft",
+    "versions": [
+      {
+        "id": "alliance",
+        "title": "Alliance"
+      },
+      {
+        "id": "horde",
+        "title": "Horde"
+      }
+    ]
+  }
+]

@@ -1,0 +1,4 @@
+refactoring:
+make variables const if needed
+capitalization and readability of comments
+remove need for env.js file and revert back to $ syntax using svelte's builtin env variables
