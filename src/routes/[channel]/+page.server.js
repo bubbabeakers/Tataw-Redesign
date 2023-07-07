@@ -1,20 +1,54 @@
 export async function load({ locals, params }) {
-  const channel = params.channel;
-  const channelUserInfo = await locals.api.get('users', {
+  let channel = params.channel;
+  let broadcasterInfo = await locals.api.get('users', {
     search: {
       login: channel
     }
   }).then(response => response.data[0]);
-  let channelInfo = [];
 
-  if (channelUserInfo) {
-    const broadcasterId = channelUserInfo.id;
-    channelInfo = await locals.api.get('channels', {
+  let streamInfo = [];
+  let channelEmotes = [];
+  let globalEmotes = [];
+  let followers = 0;
+  let team = null;
+  
+  // if channel exists, fetch channel and global data
+  if (broadcasterInfo) {
+    let broadcasterId = broadcasterInfo.id;
+
+    streamInfo = await locals.api.get('streams', {
+      search: {
+        user_id: broadcasterId
+      }
+    }).then(response => response.data[0]);
+
+    channelEmotes = await locals.api.get('chat/emotes', {
       search: {
         broadcaster_id: broadcasterId
       }
-    }).then(response => response.data[0]);
+    }).then(response => response.data);
+
+    globalEmotes = await locals.api.get('chat/emotes/global').then(response => response.data);
+
+    followers = await locals.api.get('channels/followers', {
+      search: {
+        broadcaster_id: broadcasterId
+      }
+    }).then(response => response.total);
+
+    team = await locals.api.get('teams/channel', {
+      search: {
+        broadcaster_id: broadcasterId
+      }
+    }).then(response => response.data ? response.data.teamDisplayName : '');
   }
 
-  return { channelInfo: channelInfo };
+  return {
+    broadcasterInfo: broadcasterInfo,
+    channelEmotes: channelEmotes,
+    followers: followers,
+    globalEmotes: globalEmotes,
+    streamInfo: streamInfo,
+    team: team
+  };
 }

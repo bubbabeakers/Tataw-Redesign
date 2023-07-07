@@ -8,23 +8,23 @@
   export let streamInfo;
 
   let sidebarOpen = true;
-  let initialStreamCount = 15;
-  let streamCount = initialStreamCount;
-  let streamCountIncrement = 10;
+  let numInitialStreams = 15;
+  let numStreams = numInitialStreams;
+  let numStreamsIncrement = 10;
 
   function toggleSidebar() {
     sidebarOpen = !sidebarOpen;
   }
 
   function showMoreStreams() {
-    if (streamCount < streams.length) {
-      streamCount += streamCountIncrement;
+    if (numStreams < streams.length) {
+      numStreams += numStreamsIncrement;
     }
   }
 
   function showLessStreams() {
-    if (streamCount > initialStreamCount) {
-      streamCount -= streamCountIncrement;
+    if (numStreams > numInitialStreams) {
+      numStreams -= numStreamsIncrement;
     }
   }
 </script>
@@ -56,33 +56,27 @@
       </li>
 
       <div class="sidebar-stream-links-container">
-        {#each streams.slice(0, streamCount) as stream, i (i)}
-          {@const streamData = {
-            username: stream.userName,
-            category: stream.gameName,
-            viewerCount: stream.viewerCount,
-            title: stream.title,
-            icon: getStreamIcon(stream.userName, streamInfo)
-          }}
-          <StreamLink stream={streamData} {sidebarOpen} />
+        {#each streams.slice(0, numStreams) as stream, i (i)}
+          <StreamLink {stream} icon={getStreamIcon(stream.userName, streamInfo)} {sidebarOpen} />
         {:else}
           <div class="no-streams-message">
             <div class="no-streams-message-icon-container">
               <img src="/images/alert.svg" alt="Alert" class="no-streams-message-icon" aria-describedby={'no-streams-message-tooltip'}>
               <Tooltip id={"no-streams-message-tooltip"} text={"No followed channels yet"} placement={"right"} />
             </div>
+
             <div class="no-streams-message-text">No followed channels yet</div>
           </div>
         {/each}
       </div>
 
-      {#if sidebarOpen && (streamCount < streams.length || streamCount > initialStreamCount)}
+      {#if sidebarOpen && (numStreams < streams.length || numStreams > numInitialStreams)}
         <li class="show-buttons-container">
-          {#if streamCount < streams.length}
+          {#if numStreams < streams.length}
             <button class="show-button" on:click={showMoreStreams}>Show More</button>
           {/if}
 
-          {#if streamCount > initialStreamCount}
+          {#if numStreams > numInitialStreams}
             <button class="show-button" on:click={showLessStreams}>Show Less</button>
           {/if}
         </li>
@@ -95,26 +89,26 @@
   @property --scrollbar-thumb-color {
     syntax: "<color>";
     inherits: true;
-    initial-value: rgb(31, 31, 31, 0);
+    initial-value: rgb(206, 208, 206, 0);
   }
-
+  
   @keyframes fadeIn {
     0% {
-      --scrollbar-thumb-color: rgb(31, 31, 31, 0);
+      --scrollbar-thumb-color: rgb(206, 208, 206, 0);
     }
 
     100% {
-      --scrollbar-thumb-color: rgb(31, 31, 31, 1);
+      --scrollbar-thumb-color: rgb(206, 208, 206, 1);
     }
   }
 
   @keyframes fadeOut {
     0% {
-      --scrollbar-thumb-color: rgb(31, 31, 31, 1);
+      --scrollbar-thumb-color: rgb(206, 208, 206, 1);
     }
 
     100% {
-      --scrollbar-thumb-color: rgb(31, 31, 31, 0);
+      --scrollbar-thumb-color: rgb(206, 208, 206, 0);
     }
   }
 
@@ -198,14 +192,9 @@
     flex-direction: column;
   }
 
-  .no-streams-message {
-    display: flex;
-    align-items: center;
-    padding: 7px 10px;
-  }
-
   .no-streams-message-icon-container {
     display: none;
+    padding: 7px 10px;
   }
 
   .no-streams-message-icon {
@@ -215,6 +204,7 @@
   .no-streams-message-text {
     color: var(--clr-gray);
     font-size: 1.4rem;
+    padding: 15px 10px;
   }
 
   .show-buttons-container {

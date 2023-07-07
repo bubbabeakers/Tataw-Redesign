@@ -7,6 +7,7 @@
   --clr-primary-dark: #171717;
   --clr-primary: #191919;
   --clr-primary-light: #1f1f1f;
+  --clr-accent-light: #8b9ae1;
   --clr-accent: #576CD8;
   --clr-accent-dark: #455CD4;
   --clr-red: #E41710;
@@ -15,7 +16,7 @@
   --border-radius: 4px;
   --box-shadow: 0 0 3px 3px var(--clr-primary-darker);
   --sidebar-width: 250px;
-  --chat-width: 340px;
+  --chat-width: 350px;
 }
 
 * {

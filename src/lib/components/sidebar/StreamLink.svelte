@@ -1,25 +1,26 @@
 <script>
-  import { formatViewerCount } from '$lib/utils.js';
+  import { formatCount } from '$lib/utils.js';
   import StreamLinkTooltip from "$lib/components/sidebar/StreamLinkTooltip.svelte";
 
   export let stream;
   export let sidebarOpen;
+  export let icon;
 </script>
 
 <li class="stream-link-container">
-  <a href={`/${stream.username}`} class="stream-link" aria-describedby="stream-link-tooltip">
-    <img src={stream.icon} alt="Streamer" class="stream-icon">
+  <a href={`/${stream.userLogin}`} class="stream-link" aria-describedby="stream-link-tooltip">
+    <img src={icon} alt="Streamer" class="stream-icon">
 
     {#if sidebarOpen}
       <div class="stream-details">
         <div class="stream-name-and-category">
-          <div class="stream-name">{stream.username}</div>
-          <div class="stream-category" title={stream.category}>{stream.category}</div>
+          <div class="stream-name">{stream.userName}</div>
+          <div class="stream-category" title={stream.gameName}>{stream.gameName}</div>
         </div>
 
         <div class="stream-viewercount">
           <div class="stream-live-icon"></div>
-          {formatViewerCount(stream.viewerCount)}
+          {formatCount(stream.viewerCount)}
         </div>
       </div>
     {/if}

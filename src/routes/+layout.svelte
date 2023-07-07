@@ -8,9 +8,7 @@
 <div class="layout-container">
   <Header user={data.user} loginUrl={data.loginUrl} signupUrl={data.signupUrl} />
   <Sidebar authenticated={Boolean(data.user)} streams={data.user ? data.followedStreams : data.topStreams} streamInfo={data.streamInfo} />
-  <main class="main-content">
-    <slot />
-  </main>
+  <slot />
 </div>
 
 <style>

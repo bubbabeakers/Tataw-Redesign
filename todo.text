@@ -1,4 +1,22 @@
 refactoring:
-make variables const if needed
-capitalization and readability of comments
-remove need for env.js file and revert back to $ syntax using svelte's builtin env variables
+-make variables const if needed
+-capitalization and readability of comments
+-equality operators (use === instead of == where necessary)
+
+general:
+-search bar functionality
+-following and browse page content
+-channel page for offline channels
+-channel details and buttons (following, sub, notifications, etc.) for online channels
+
+chat specific features:
+-emote menu
+-chat settings menu
+-send message functionality
+-proper emote lookup for gifs and maybe 7tv emotes
+-chat message announcements/subs/alerts
+-slow mode/chat modes
+-deleted messages
+-chat message copy/reply features
+-first time chatter message
+-chat connection issue. chat connect will timeout but then successfully join. find a better way to know when it has connected

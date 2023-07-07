@@ -98,6 +98,8 @@
     font-weight: 600;
     padding: 5px;
     border-radius: var(--border-radius);
+    user-select: none;
+    z-index: 99;
   }
 
   .tooltip-arrow {

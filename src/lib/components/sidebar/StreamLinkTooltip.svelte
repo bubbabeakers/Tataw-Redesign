@@ -1,5 +1,5 @@
 <script>
-  import { formatViewerCount } from '$lib/utils.js';
+  import { formatCount } from '$lib/utils.js';
   import { computePosition, shift, offset, autoUpdate } from '@floating-ui/dom';
   import { onMount } from 'svelte';
 
@@ -60,13 +60,13 @@
 </script>
 
 <div class="stream-link-tooltip" {id} role="tooltip" bind:this={tooltip}>
-  <div class="stream-name-and-category" class:hide={sidebarOpen}>{stream.username} ∙ {stream.category}</div>
+  <div class="stream-name-and-category" class:hide={sidebarOpen}>{stream.userName} ∙ {stream.gameName}</div>
 
   <div class="stream-title">{stream.title ? stream.title : 'No stream title'}</div>
 
   <div class="stream-viewercount" class:hide={sidebarOpen}>
     <div class="stream-live-icon"></div>
-    Live | {formatViewerCount(stream.viewerCount)} viewers
+    Live | {formatCount(stream.viewerCount)} viewers
   </div>
 </div>
 
@@ -84,8 +84,9 @@
     padding: 6px;
     flex-direction: column;
     row-gap: 3px;
-    box-shadow: var(--box-shadow);
     border: 1px solid var(--clr-primary-light);
+    z-index: 999;
+    user-select: none;
   }
 
   .stream-name-and-category {

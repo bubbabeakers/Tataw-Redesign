@@ -3,10 +3,17 @@
   import Menu from "$lib/components/header/Menu.svelte";
   import Searchbar from "$lib/components/header/Searchbar.svelte";
   import Avatar from "$lib/components/header/Avatar.svelte";
+  import AuthenticationModal from './AuthenticationModal.svelte';
 
   export let user;
   export let loginUrl;
   export let signupUrl;
+
+  let showAuthModal = false;
+
+  function toggleAuthModal() {
+    showAuthModal = !showAuthModal;
+  }
 </script>
 
 <header class="header">
@@ -28,9 +35,13 @@
       <Avatar {user} />
     {:else}
       <div class="header-auth-container">
-        <a href={loginUrl} class="header-auth-link">Login</a>
+        <button class="header-auth-button" on:click={toggleAuthModal}>Login</button>
         <div class="header-text">or</div>
-        <a href={signupUrl} class="header-auth-link">Sign Up</a>
+        <button class="header-auth-button" on:click={toggleAuthModal}>Sign Up</button>
+
+        {#if showAuthModal}
+          <AuthenticationModal {loginUrl} {signupUrl} toggleModal={toggleAuthModal} />
+        {/if}
       </div>
     {/if}
   </div>
@@ -89,17 +100,16 @@
     column-gap: 8px;
   }
 
-  .header-auth-link {
+  .header-auth-button {
     background: var(--clr-accent);
     font-weight: 600;
     padding: 9px 12px;
     border-radius: var(--border-radius);
     color: white;
     white-space: nowrap;
-    text-decoration: none;
   }
 
-  .header-auth-link:hover {
+  .header-auth-button:hover {
     background: var(--clr-accent-dark);
   }
 

@@ -72,9 +72,8 @@
     flex-direction: column;
     background: var(--clr-primary);
     width: 210px;
-    box-shadow: var(--box-shadow);
     border-radius: var(--border-radius);
-    z-index: 99;
+    z-index: 999;
     padding: 6px;
     border: 1px solid var(--clr-primary-light);
   }

@@ -20,6 +20,7 @@
 		"normalize.css": "^8.0.1",
 		"socket.io": "^4.6.1",
 		"socket.io-client": "^4.6.1",
+		"svelte-range-slider-pips": "^2.1.1",
 		"twitch-js": "^2.0.0-beta.45"
 	}
 }

@@ -1,66 +1,49 @@
 import { Chat } from 'twitch-js';
 import { onAuthenticationFailure } from './authentication.js';
 import { io } from 'socket.io-client';
+import { domain, emoteUrl } from '../consts.js';
 import chatBadgeTitles from '../../../static/data/chatBadgeTitles.json';
 
 class TwitchChat {
-  api;
   chat;
   connected = false;
   channel = '';
   maxMessages = 150;
+  socket = io(domain, { autoConnect: false });
+  
   channelBadges;
-  channelEmotes;
   globalBadges;
-  globalEmotes;
   allBadges;
-  badgesRegex = /badges=((?:[^;]+?\/[^;]+?,?)*);/;
-  socket = io('http://localhost:5173', { 
-    autoConnect: false
-  });
 
-  initialize(accessToken, refreshToken, username, globalBadges, globalEmotes, api) {
-    this.api = api;
-    this.globalEmotes = globalEmotes;
+  actionMessageRegex = /^\u0001ACTION (.*)\u0001$/m;
+  badgesRegex = /badges=((?:[^;]+?\/[^;]+?,?)*);/;
+  urlRegex = /https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]+\.[^\s]{2,}|www\.[a-zA-Z0-9]+\.[^\s]{2,}/gi;
+
+  initialize(accessToken, refreshToken, username, globalBadges) {
     this.globalBadges = globalBadges;
   
     this.chat = new Chat({
       token: accessToken,
       username: username,
       onAuthenticationFailure: () => onAuthenticationFailure(refreshToken),
-      connectionTimeout: 15000,
+      connectionTimeout: 10000,
       joinTimeout: 10000,
-      log: {
-        enabled: false
-      }
+      log: { enabled: false }
     });
   
-    this.chat.on('PRIVMSG', (message) => {
-      const displayName = message.tags.displayName;
-      const color = message.tags.color ? message.tags.color : this.getUserColor(message.username);
-      const badgeInfo = this.deserializeRawMessage(message.tags.badgeInfo, ',', '/');
+    this.chat.on('PRIVMSG', (_message) => {
+      const actionMessage = _message.tags.isModerator && this.actionMessageRegex.test(_message.message);
+      const color = _message.tags.color ? _message.tags.color : this.getUserColor(_message.username);
+      const displayName = _message.tags.displayName;
+      const badges = this.getBadges(_message._raw, _message.tags.badgeInfo);
+      const parsedMessage = this.parseMessage(_message.message, _message.tags.emotes);
 
-      const emoteUrls = this.getEmoteUrls(message.tags.emotes);
-      let emotes = message.tags.emotes;
-      emotes.forEach(emote => emote.url = emoteUrls[emote.id]);
-
-      console.log(emotes);
-
-      const badgesRaw = message._raw.match(this.badgesRegex)[1];
-      let badges = this.deserializeRawMessage(badgesRaw, ',', '/');
-      badges = this.getUserBadges(badges, badgeInfo);
-  
-      message = {
-        message: {
-          text: message.message,
-          emotes: emotes
-        },
-        user: {
-          displayName: displayName,
-          color: color,
-          badges: badges
-        },
-        type: 'chat'
+      const message = {
+        badges: badges,
+        color: color,
+        displayName: displayName,
+        message: parsedMessage,
+        type: actionMessage ? 'action' : 'chat'
       };
 
       this.socket.emit('message', message);
@@ -68,6 +51,12 @@ class TwitchChat {
   }
 
   async connect() {
+    if (!this.chat) {
+      return false;
+    } else if (this.connected) {
+      return true;
+    }
+
     this.socket.connect();
     
     this.connected = await this.chat.connect().then(() => {
@@ -82,6 +71,12 @@ class TwitchChat {
   }
   
   async disconnect() {
+    if (!this.chat) {
+      return true;
+    } else if(!this.connected) {
+      return false;
+    }
+
     this.connected = await this.chat.disconnect().then(() => {
       console.log("chat disconnected");
 
@@ -92,39 +87,48 @@ class TwitchChat {
       return false;
     }).catch(() => {
       console.log("chat disconnect failed");
-
       return true;
     });
   
     return this.connected;
   }
   
-  async join(channel, channelBadges, channelEmotes) {
-    if (!chat || this.channel == channel) {
-      return
+  async join(channel, channelBadges) {
+    if (!this.chat) {
+      return false;
+    } else if (this.channel == channel) {
+      return true;
     }
 
-    this.channelEmotes = channelEmotes;
     this.channelBadges = channelBadges;
     this.allBadges = this.channelBadges.concat(this.globalBadges);
     
     // if connected to a channel already, part from it before joining another one
     if (this.channel) {
-      await this.chat.part(this.channel).then(() => {
+      let parted = await this.chat.part(this.channel).then(() => {
         console.log('chat parted');
+        return true;
       }).catch(() => {
         console.log("chat part failed");
+        return false;
       });
+
+      if (!parted) {
+        return false;
+      }
     }
   
-    await this.chat.join(channel).then(() => {
+    let joined = await this.chat.join(channel).then(() => {
       this.channel = channel;
       console.log("chat joined");
+      return true;
     }).catch(() => {
+      this.channel = '';
       console.log("chat join failed");
+      return false;
     });
 
-    return;
+    return joined;
   }
   
   getUserColor(username) {
@@ -168,76 +172,99 @@ class TwitchChat {
     }, {});
   }
 
-  async getEmoteUrls(emotes) {
-    let urls = emotes.reduce((o, emote) => ({...o, [emote.id]: ''}), {});
+  parseMessage(message, emotes) {
+    // remove action message delimeters if they exist
+    message = message.replace(this.actionMessageRegex, '$1');
 
-    for (const emote of emotes) {
-      // check channelEmotes for emote url
-      for (const set of this.channelEmotes.data) {
-        if (set.id == emote.id) {
-          const url = this.channelEmotes.template.replace('{{id}}/{{format}}/{{theme_mode}}/{{scale}}', `${emote.id}/static/dark/1.0`);
-          urls[emote.id] = url;
-          break;
-        }
-      }
+    let urls = [...message.matchAll(this.urlRegex)].map(match => ({ start: match.index, end: match.index + match[0].length }));
 
-      // check globalEmotes for emote url
-      for (const set of this.globalEmotes.data) {
-        if (set.id == emote.id) {
-          const url = this.globalEmotes.template.replace('{{id}}/{{format}}/{{theme_mode}}/{{scale}}', `${emote.id}/static/dark/1.0`);
-          urls[emote.id] = url;
-          break;
-        }
-      }
+    // if there are no emotes or urls to parse then just return the original message
+    if (emotes.length === 0 && urls.length === 0) {
+      return [{
+        type: 'text',
+        value: message
+      }];
     }
 
-    // if a url was found for every emote then return
-    if (Object.values(urls).every(url => url)) {
-      return emotes;
-    }
+    let parsedMessage = [];
+    let piece = {};
+    let messageIndex = 0;
+    let emoteIndex = 0;
+    let urlIndex = 0;
 
-    // get emote sets for any emote not found in the channel or global emote sets
-    const emoteSetIds = Object.keys(urls).filter(id => !urls[id]);
-    const numIds = 25;
+    do {
+      if (messageIndex === emotes[emoteIndex]?.start) {
+        let emote = message.slice(emotes[emoteIndex].start, emotes[emoteIndex].end + 1);
+        let url1X = emoteUrl.replace('{{id}}/{{format}}/{{theme_mode}}/{{scale}}', `${emotes[emoteIndex].id}/static/dark/1.0`);
+        let url2X = emoteUrl.replace('{{id}}/{{format}}/{{theme_mode}}/{{scale}}', `${emotes[emoteIndex].id}/static/dark/2.0`);
 
-    for (let i = 0; i < emoteSetIds.length; i += numIds) {
-      const searchIds = emoteSetIds.slice(i, i + numIds);
-      const emoteSets = await this.api.get('chat/emotes/set', {
-        search: {
-          emote_set_id: searchIds
-        }
-      });
+        piece = {
+          type: 'emote',
+          value: {
+            emote: emote,
+            url1X: url1X,
+            url2X: url2X
+          } 
+        };
 
-      for (const id of searchIds) {
-        for (const set of emoteSets.data) {
-          if (set.id == id) {
-            const url = emoteSets.template.replace('{{id}}/{{format}}/{{theme_mode}}/{{scale}}', `${id.id}/static/dark/1.0`);
-            urls[id] = url;
-            break;
-          }
-        }
+        messageIndex = emotes[emoteIndex].end + 1;
+        emoteIndex += 1;
+      } else if (messageIndex === urls[urlIndex]?.start) {
+        let url = message.slice(urls[urlIndex].start, urls[urlIndex].end);
+
+        piece = {
+          type: 'url',
+          value: url
+        };
+
+        messageIndex = urls[urlIndex].end;
+        urlIndex += 1;
+      } else if (messageIndex < emotes[emoteIndex]?.start || messageIndex < urls[urlIndex]?.start) {
+        let textEnd = Math.min(isNaN(emotes[emoteIndex]?.start) ? Infinity : emotes[emoteIndex].start, isNaN(urls[urlIndex]?.start) ? Infinity : urls[urlIndex].start);
+        let text = message.slice(messageIndex, textEnd);
+
+        piece = {
+          type: 'text',
+          value: text
+        };
+
+        messageIndex = textEnd;
+      } else {
+        let text = message.slice(messageIndex);
+
+        piece = {
+          type: 'text',
+          value: text
+        };
+
+        messageIndex = message.length;
       }
-    }
 
-    return emotes;
+      parsedMessage.push(piece);
+    } while (messageIndex < message.length);
+
+    return parsedMessage;
   }
 
-  getUserBadges(badges, badgeInfo) {
-    let userBadges = [];
+  getBadges(rawMessage, rawBadgeInfo) {
+    const rawBadges = rawMessage.match(this.badgesRegex)[1];
+    const badgeInfo = this.deserializeRawMessage(rawBadgeInfo, ',', '/');
+    const badges = this.deserializeRawMessage(rawBadges, ',', '/');
+    let badgesFound = [];
 
     for (const badge in badges) {
-      let title = '';
+      let name = '';
       let url = '';
 
       // get badge title
       if (badge == 'subscriber') {
         const monthsSubscribed = parseInt(badgeInfo[badge]);
-        title = this.getSubscriberBadgeTitle(monthsSubscribed);
+        name = this.getSubscriberBadgeTitle(monthsSubscribed);
       } else {
         const version = this.getSetVersion(chatBadgeTitles, badge, badges[badge]);
 
         if (version.title) {
-          title = version.title;
+          name = version.title;
         }
       }
 
@@ -248,15 +275,15 @@ class TwitchChat {
         url = version.imageUrl1X;
       }
 
-      if (title && url) {
-        userBadges.push({
-          title: title,
+      if (name && url) {
+        badgesFound.push({
+          name: name,
           url: url
         });
       }
     }
 
-    return userBadges;
+    return badgesFound;
   }
 
   getSubscriberBadgeTitle(monthsSubscribed) {

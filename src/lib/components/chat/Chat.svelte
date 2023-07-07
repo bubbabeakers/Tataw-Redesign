@@ -11,6 +11,8 @@
   export let authenticated;
   export let broadcasterId;
   export let channel;
+  export let channelEmotes;
+  export let globalEmotes;
 
   let open = true;
   let connected = false;
@@ -23,12 +25,9 @@
   let newMessages = [];
   let maxMessages = 150;
 
-  // update messages everytime the channel changes
-  $: channel ? messages = [] : null;
-
   // join a channel after connecting to chat or navigating to a new channel
-  // this code will only run in the browser. this avoids joining chat multiple times (once on server and once on browser)
-  $: browser && connected ? joinChat(channel) : undefined;
+  // this will only run in the browser in order to avoid joining chat multiple times (once on server and once on browser)
+  $: browser && connected ? joinChat(channel) : null;
 
   const socket = io();
 
@@ -47,7 +46,7 @@
     try {
       fetch('/api/connectChat', {
         method: 'POST'
-      }).then(response => response.text()).then(response => connected = response);
+      }).then(res => res.text()).then(res => connected = res);
     } catch {
       console.error();
     }
@@ -57,7 +56,7 @@
     try {
       fetch('/api/disconnectChat', {
         method: 'POST'
-      }).then(response => response.text()).then(response => connected = response);
+      }).then(res => res.text()).then(res => connected = res);
     } catch {
       console.error();
     }
@@ -71,6 +70,10 @@
           broadcasterId: broadcasterId,
           channel: channel
         })
+      }).then(res => res.text()).then(res => {
+        if (res) {
+          messages = [];
+        }
       });
     } catch {
       console.error();
@@ -116,7 +119,7 @@
       <button class="chat-header-button" on:click={toggleChat} aria-describedby="chat-header-collapse-button-tooltip">
         <img src="/images/collapse-expand.svg" alt="Collapse" class="chat-header-button-icon horizontal-flip">
       </button>
-      <Tooltip id={"chat-header-collapse-button-tooltip"} text={"Close Chat"} placement={"left"} />
+      <Tooltip id={'chat-header-collapse-button-tooltip'} text={'Close Chat'} placement={'left'} />
 
       <div class="chat-header-title">Stream Chat</div>
 
@@ -127,9 +130,7 @@
       <div class="chat-messages-scroller" bind:this={chatScroller} on:scroll={onScroll}>
         <div class="chat-messages">
           {#each messages as message, i (i)}
-            {#await message then message}
-              <Message {message} />
-            {/await}
+            <Message {message} />
           {/each}
         </div>
       </div>
@@ -167,7 +168,7 @@
     <button class="chat-header-button chat-header-expand-button" on:click={toggleChat} aria-describedby="chat-header-expand-button-tooltip">
       <img src="/images/collapse-expand.svg"  alt="Expand" class="chat-header-button-icon">
     </button>
-    <Tooltip id={"chat-header-expand-button-tooltip"} text={"Open Chat"} placement={"left"} />
+    <Tooltip id={'chat-header-expand-button-tooltip'} text={'Open Chat'} placement={'left'} />
   {/if}
 </div>
 
@@ -201,6 +202,10 @@
     position: absolute;
     right: calc(100% + 10px);
     top: 10px;
+  }
+
+  .chat-header-expand-button:hover {
+    background: rgba(161, 161, 161, 0.25);
   }
 
   .chat-header-title {

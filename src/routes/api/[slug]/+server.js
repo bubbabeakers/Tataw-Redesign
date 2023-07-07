@@ -19,76 +19,80 @@ export async function GET({ cookies, locals, params, url }) {
 }
 
 export async function POST({ cookies, locals, params, request }) {
-  if (params.slug === 'logout') {
-    // if the user is not logged in, redirect them back to home page
-    if (!locals.user) {
+  switch (params.slug) {
+    case 'clip': {
+      const broadcasterId = await request.text();
+      const clipUrl = await locals.api.post('clips', { search: { broadcaster_id: broadcasterId } }).then(response => response.data[0].editUrl);
+
+      return new Response(clipUrl, {
+        status: 200,
+        statusText: 'OK'
+      });
+    }
+    case 'connectChat': {
+      if (!twitchChat.chat) {
+        const accessToken = cookies.get('access_token');
+        const refreshToken = cookies.get('refresh_token');
+        const username = locals.user?.displayName;
+        const globalBadges = await locals.api.get('chat/badges/global').then(response => response.data);
+  
+        twitchChat.initialize(accessToken, refreshToken, username, globalBadges);
+      }
+  
+      let connected = twitchChat.connected;
+  
+      if (!connected) {
+        connected = await twitchChat.connect();
+      }
+  
+      return new Response(connected, {
+        status: 200,
+        statusText: 'OK'
+      });
+    }
+    case 'disconnectChat': {
+      let connected = twitchChat.connected;
+
+      if (connected) {
+        connected = await twitchChat.disconnect();
+      }
+
+      return new Response(connected, {
+        status: 200,
+        statusText: 'OK'
+      });
+    }
+    case 'joinChat': {
+      const { broadcasterId, channel } = await request.json();
+      const channelBadges = await locals.api.get('chat/badges', { search: { broadcaster_id: broadcasterId } }).then(response => response.data);
+
+      let joined = await twitchChat.join(channel, channelBadges);
+
+      return new Response(joined, {
+        status: 200,
+        statusText: 'OK'
+      });
+    }
+    case 'logout': {
+      // if the user is not logged in, redirect them back to home page
+      if (!locals.user) {
+        throw redirect(302, '/');
+      }
+
+      // delete the users cookies so that they are no longer logged into their twitch account
+      cookies.delete('access_token', { path: '/' });
+      cookies.delete('refresh_token', { path: '/' });
+      cookies.delete('user', { path: '/' });
+
+      // return OK response
+      return new Response(undefined, {
+        status: 200,
+        statusText: 'OK'
+      });
+    }
+    default: {
+      // if route not found, redirect the user back to home page
       throw redirect(302, '/');
     }
-
-    // delete the users cookies so that they are no longer logged into their twitch account
-    cookies.delete('access_token', { path: '/' });
-    cookies.delete('refresh_token', { path: '/' });
-    cookies.delete('user', { path: '/' });
-
-    // return OK response
-    return new Response(undefined, {
-      status: 200,
-      statusText: 'OK'
-    });
-  } else if (params.slug === 'connectChat') {
-    if (!twitchChat.chat) {
-      const accessToken = cookies.get('access_token');
-      const refreshToken = cookies.get('refresh_token');
-      const username = locals.user ? locals.user.displayName : null;
-      const globalBadges = await locals.api.get('chat/badges/global').then(response => response.data);
-      const globalEmotes = await locals.api.get('chat/emotes/global');
-      const api = locals.api;
-
-      twitchChat.initialize(accessToken, refreshToken, username, globalBadges, globalEmotes, api);
-    }
-
-    let connected = twitchChat.connected;
-
-    if (!connected) {
-      connected = await twitchChat.connect();
-    }
-
-    return new Response(connected, {
-      status: 200,
-      statusText: 'OK'
-    });
-  } else if (params.slug === 'disconnectChat') {
-    let connected = twitchChat.connected;
-
-    if (connected) {
-      connected = await twitchChat.disconnect();
-    }
-
-    return new Response(connected, {
-      status: 200,
-      statusText: 'OK'
-    });
-  } else if (params.slug === 'joinChat') {
-    const { broadcasterId, channel } = await request.json();
-    const channelBadges = await locals.api.get('chat/badges', {
-      search: {
-        broadcaster_id: broadcasterId
-      }
-    }).then(response => response.data);
-    const channelEmotes = await locals.api.get('chat/emotes', {
-      search: {
-        broadcaster_id: broadcasterId
-      }
-    })
-
-    await twitchChat.join(channel, channelBadges, channelEmotes);
-
-    return new Response(undefined, {
-      status: 200,
-      statusText: 'OK'
-    });
   }
-
-  // if route not found, redirect the user back to home page
-  throw redirect(302, '/');
 }

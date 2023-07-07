@@ -84,10 +84,9 @@
     width: 210px;
     background: var(--clr-primary);
     border-radius: var(--border-radius);
-    z-index: 99;
+    z-index: 999;
     display: flex;
     flex-direction: column;
-    box-shadow: var(--box-shadow);
     border: 1px solid var(--clr-primary-light);
     font-size: 1.4rem;
     padding: 6px;
