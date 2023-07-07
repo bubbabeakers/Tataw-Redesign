@@ -20,3 +20,7 @@ chat specific features:
 -chat message copy/reply features
 -first time chatter message
 -chat connection issue. chat connect will timeout but then successfully join. find a better way to know when it has connected
+
+misc:
+update formatCount function variable to just "count"
+update chevron-down to chevron-down-blue to be consistent with the other svgs
